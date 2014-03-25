@@ -3,6 +3,7 @@
 	"main" : "./index.js",
 	"bin"  : { "simple-server": "./bin/simple-server" },
 	"description" : "simple http server",
+	"keywords" : "httpserver", 
 	"author" : {
 		"name" : "patbiti",
 		"email" : "pat.biti@gmail.com"
