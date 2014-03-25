@@ -1,0 +1,29 @@
+{
+	"name" : "simple-server",
+	"main" : "./index.js",
+	"bin"  : { "simple-server": "./bin/simple-server" },
+	"description" : "simple http server",
+	"author" : {
+		"name" : "patbiti",
+		"email" : "pat.biti@gmail.com"
+	},
+	"contributors" : [{
+		"name" : "Robin Young",
+		"email" : "yonglin@staff.sina.com.cn"
+	}],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/patbiti/simpleHttpServer.git"
+	},
+	"version" : "0.0.1",
+	"dependencies" :{
+		"argsparser" : "0.0.6",
+		"less" : "1.7.0",
+		"express" : "3.5.0"
+	},
+	"devDependencies" : {
+		"argsparser" : "0.0.6",
+		"less" : "1.7.0",
+		"express" : "3.5.0"
+	}
+}
