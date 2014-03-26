@@ -1,8 +1,9 @@
 {
-	"name" : "simple-server",
+	"name" : "simple-httpserver",
 	"main" : "./index.js",
-	"bin"  : { "simple-server": "./bin/simple-server" },
-	"description" : "simple http server",
+	"bin"  : { "simple-httpserver": "./bin/httpsimple-server" },
+	"description" : "simple httpserver",
+	"keywords" : "httpserver", 
 	"author" : {
 		"name" : "patbiti",
 		"email" : "pat.biti@gmail.com"
