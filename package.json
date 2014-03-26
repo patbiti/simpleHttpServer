@@ -1,7 +1,6 @@
 {
 	"name" : "simple-httpserver",
 	"main" : "./index.js",
-	"bin"  : { "simple-httpserver": "./bin/httpsimple-server" },
 	"description" : "simple httpserver",
 	"keywords" : "httpserver", 
 	"author" : {
