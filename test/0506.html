@@ -1,0 +1,297 @@
+
+<!doctype html>
+<html>
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>我的合同</title>
+
+<script>
+// pageload加载参数初始化, 页面最开始是设置
+M = window.M || {};
+M.gaAccount = 'UA-28174807-3';
+
+YUI_config = {
+    'mt-beacon': {
+        domainHost: 'sankuai.com',
+        cdnDomainHost: 'meituan.net',
+        data: {}
+    },
+    'mt-log': {
+        pageview: {
+            data: {
+                /* start */
+                st: (new Date()).getTime()
+            }
+        }
+    }
+};
+
+// 根据cookie记录折叠/展开sidebar
+(function() {
+    var cookieMatch = document.cookie.match(/cos-ui-sidebar=([^;]*)/),
+        cookieStatus = cookieMatch && cookieMatch[1],
+        html;
+    if (cookieStatus) {
+        html = document.documentElement;
+        html.className += ' main-nav-' + cookieStatus;
+    }
+}());
+</script>
+
+
+
+<script>
+var M = window.M || {};
+M.yuiVersion = '3.13.0';
+M.baseUri = 'http://develop.cs0.meituan.net/';
+M.comboBase = 'http://develop.jc.meituan.net/combo/?f=';
+M.combine = false;
+M.debug = true;
+M.cosGroups = [
+    { name: 'cos.ui', prefix: 'ui-' },
+    {
+        name: 'mtct',
+        prefix: 'ct-',
+        path: 'http://localhost:8081/static/',
+        combine: false
+    }
+];
+M.site = 'ct';
+</script>
+
+<link href="http://develop.cs0.meituan.net/cos.ui/cos-ui.css" rel="stylesheet">
+
+<script src="http://develop.jc.meituan.net/combo/?f=mt-yui-core.v3.13.0.js;yui-config.js"></script>
+
+
+
+<style type="text/css">
+    .remind {color: gray; font-size: 12px}
+    .status-pass a{color: green; font-weight: bold}
+    .status-refuse a{color: red; font-weight: bold}
+    .status-normal a{color: #000000}
+</style>
+
+<link href="/static/css/mtct.css" type="text/css" rel="stylesheet"></link>
+</head>
+
+
+<body class="page page-contract page-contract-bdlist theme-cos">
+    <div id="doc">
+        <div id="l-bd">
+            <div class="container-fluid">
+<div id="content">
+
+    <div class="head">
+        <h2 class="other">我的合同</h2>
+    </div>
+
+    <div class="sect ct">
+        <form id="searchFormNode" action="bdlist" method="post" class="form-inline contract-search">
+            <div>
+                <input autocomplete="off" type="text" class="f-text" style="width:10em" id="filterUser" value="邵剑">
+                <input type="hidden" name="filterUserId" value=""/>
+                <input type="hidden" id="treeUserId" name="treeUserId" value="">
+                <input type="hidden" id="treeGroupId" name="treeGroupId" value="">
+
+                &nbsp;&nbsp;
+                <input placeholder="合同编号或合同名" type="text" class="f-text" id="keyword" name="keyword" value=""/>
+
+                &nbsp;&nbsp;
+                <input type="submit" value="查询" class="btn"/>
+                &nbsp;&nbsp;
+
+                    <input type="button" id="contractDownload" value="导出合同（批量换BD）" class="btn btn-flat btn-small"style="display:none" >
+
+            </div>
+        </form>
+
+
+        <table style="width:1000px" class="noborder contract-filter">
+            <tr>
+                <th>产品信息状态</th>
+                <td>
+                    <a href="?requestStatus=1&treeUserId=&treeGroupId=">含待审核(<font color="red">0</font>)</a>
+                </td>
+                <td>
+                    <a href="?requestStatus=5&treeUserId=&treeGroupId=">审核中(<font color="red">0</font>)</a>
+                </td>
+                <td>
+                    <a href="?requestStatus=2&treeUserId=&treeGroupId=">审核通过(<font color="red">0</font>)</a>
+                </td>
+                <td>
+                    <a href="?requestStatus=3&treeUserId=&treeGroupId=">驳回(<font color="red">0</font>)</a>
+                </td>
+            </tr>
+            <tr>
+                <th>上单计划状态</th>
+                <td>
+                        <a href="?auditStatus=-2&treeUserId=&treeGroupId=">全部(<font color="red">0</font>)</a>
+                </td>
+                <td>
+                    <a href="?auditStatus=-1&treeUserId=&treeGroupId=">无上单计划(<font color="red">0</font>)</a>
+
+                </td>
+                <td>
+                    <a href="?auditStatus=0&treeUserId=&treeGroupId=">待提交(<font color="red">0</font>)</a>
+                </td>
+                <td>
+                    <a href="?auditStatus=1&treeUserId=&treeGroupId=">待审核(<font color="red">0</font>)</a>
+                </td>
+                <td>
+                    <a href="?auditStatus=2&treeUserId=&treeGroupId=">审核通过(<font color="red">0</font>)</a>
+                </td>
+                <td>
+                    <a href="?auditStatus=3&treeUserId=&treeGroupId=">驳回(<font color="red">0</font>)</a>
+                </td>
+                <td>
+                    <a href="?auditStatus=4&treeUserId=&treeGroupId=">废除(<font color="red">0</font>)</a>
+                </td>
+            </tr>
+            <tr>
+                <th>变更状态</th>
+                <td>
+                    <a href="?changeStatus=1&cityId=&treeUserId=&treeGroupId=">待提交(<font color="red">0</font>)</a>
+                </td>
+                <td>
+                    <a href="?changeStatus=2&cityId=&treeUserId=&treeGroupId=">待审核(<font color="red">0</font>)</a>
+                </td>
+                <td>
+                    <a href="?changeStatus=11&cityId=&treeUserId=&treeGroupId=">审核通过(<font color="red">0</font>)</a>
+                </td>
+               <td colspan="3">
+                    <a href="?changeStatus=12&cityId=&treeUserId=&treeGroupId=">驳回(<font color="red">0</font>)</a>
+                <span style="color: #aaa; font-size: 12px">被驳回的变更可能会影响财务打款，请尽快修改或删除。</span>
+                </td>
+            </tr>
+        </table>
+
+        <table id="contract-bdlist" class="table table-compress table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th width="120px" data-params="{name:'contractNum'}">合同编号</th>
+                    <th width="120px" data-params="{name:'contractName',unsortable:true}">合同名称</th>
+                    <th data-params="{name:'requestStatusStr',unsortable:true}" width="60px">产品信息</th>
+                    <th data-params="{name:'auditStatusDesc',unsortable:true}" width="60px">上单计划</th>
+                    <th data-params="{name:'status',unsortable:true}" width="60px">变更状态</th>
+                    <th data-params="{name:'requestCommitTime',unsortable:true}" width="85px">BD提交时间</th>
+                    <th data-params="{name:'requestAuditTime',unsortable:true}" width="90px">城市品控审核时间</th>
+                    <th data-params="{name:'signTime'}" width="85px">签约日期</th>
+                    <th data-params="{name:'addTime'}" width="70px">添加时间</th>
+                    <th data-params="{name:'bdName',unsortable:true}" width="50px">负责BD</th>
+                    <th data-params="{unsortable:true}" width="60px">操作</th>
+                </tr>
+            <thead>
+                    </table>
+                    <div id="paginator"></div>
+                    <p class="remind">* 产品信息对应的项目上线后，状态将会变为“待提交（已上线）”，下次上线时需再次提交</p>
+                </div>
+            </div>
+
+<script>
+    M.use('ct-contract/bdlist',function(Y) {
+        var auditStatus = {
+            REFUSE: '3',
+            PASS: '2',
+            WAIT_COMMIT: '0',
+            WAIT_AUDIT: '1',
+            DESTORY: '4',
+            START_AUDIT: '5'
+        };
+
+        var changeStatus = {
+            REFUSE: '12',
+            PASS: '11',
+            WAIT_COMMIT: '1',
+            WAIT_AUDIT: '2',
+        };
+
+        var subBdIds = [];
+        subBdIds.push(22208);
+
+        var sortQuery = {
+            auditStatus:'',
+            requestStatus:'',
+            changeStatus: '',
+            forBd:1,
+            bdPosId:80,
+            subBdIds:subBdIds
+        };
+
+        var pageJson = {
+            sortQuery: sortQuery,
+            auditStatus: auditStatus,
+            changeStatus: changeStatus,
+            page: {
+                pageNo: 1,
+                totalPageCount: 0,
+                totalCount:0
+            }
+        }
+        Y.mt.ct.ContractBdList.bdlist(pageJson);
+    });
+</script>
+</div>
+        </div>
+        <div id="l-ft">
+            <div class="copyright"><p>@ <span>2013</span> meituan</p></div>
+        </div>
+    </div>
+</body>
+
+
+<script type="text/javascript">
+
+var _gaq = _gaq || [];
+
+// 浏览器检测升级提醒
+M.addCondition("cos-browser-upgrade-tip", "cos.core", {
+    "test": function(Y) {
+        if (Y.UA.android ||
+            Y.UA.iphone ||
+            Y.UA.ios ||
+            (Y.UA.chrome && parseInt(Y.UA.chrome, 10) > 20)
+        ) {
+            return false;
+        } else {
+            return true;
+        }
+    },
+    "trigger": "cos-pageload"
+});
+YUI_config.groups['cos.core'].modules['cos-browser-upgrade-tip'].skinnable = true;
+
+
+
+YUI().use('cos-pageload', function(Y) {
+
+    try {
+        // onload/domready时的处理, 如记录时间和关闭mask等操作
+        Y.mt.cos.PageLoad.init();
+
+        // 浏览器检测
+        if (Y.mt.cos && Y.mt.cos.BrowserUpgradeTip) {
+            YUI.Env.cosBrowserUpgradeTip = new Y.mt.cos.BrowserUpgradeTip();
+        }
+    } catch(err) {
+        Y.error('cos.Pageload.init 发生错误', err, 'cos-pageload');
+        return;
+    }
+
+    Y.use('ui-main', function(Y) {
+        // cos.ui初始化
+        Y.mt.ui.Main.init();
+    });
+
+    Y.use("mt-base", function(Y) {
+        // 控件初始化
+        Y.mt.widget.init();
+
+        // GA事件追踪
+        Y.mt.Tracking.init();
+    });
+
+});
+</script>
+</html>
